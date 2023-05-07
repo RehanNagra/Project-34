@@ -87,20 +87,20 @@ function setup()
    rope = new Rope(7,{x:120,y:90});
    rope2 = new Rope(7,{x:490,y:90});
 
-   sound_btn = createSprite(width-50,20,50,50)
-   sound_btn.scale = 0.5;
-   sound_btn.addImage(muteImg);
+  //  sound_btn = createSprite(width-50,20,50,50)
+  //  sound_btn.scale = 0.5;
+  //  sound_btn.addImage(muteImg);
   //  sound_btn.position(width-50,20);
   //  sound_btn.size(50,50);
-   if(mousePressedOver(sound_btn)){
-    changeSoundState()
-   }
+  //  if(mouseClicked(sound_btn)){
+  //   changeSoundState()
+  //  }
    
 
-  // mute_btn = createImg('mute.png');
-  // mute_btn.position(width-50,20);
-  // mute_btn.size(50,50);
-  // mute_btn.mouseClicked(mute);
+  mute_btn = createImg('mute.png');
+  mute_btn.position(width-50,20);
+  mute_btn.size(50,50);
+  mute_btn.mouseClicked(mute);
 
   // unmute_btn = createImg('unmute.png');
   // unmute_btn.position(width-50,20);
@@ -236,21 +236,43 @@ function collide(body,sprite,x)
 }
 
 
-function changeSoundState()
+// function changeSoundState()
+// {
+//   if(bk_song.isPlaying() && mousePressedOver(sound_btn))
+//      {
+//       bk_song.stop();
+//       // sound_btn.addImage(unmuteImg)
+
+
+//     }
+//      else if(!bk_song.isPlaying() && mousePressedOver(sound_btn)){
+//       bk_song.play();
+//       // sound_btn.addImage(muteImg)
+//      }
+// }
+
+function mute()
 {
-  if(bk_song.isPlaying() && mousePressedOver(sound_btn))
+  if(bk_song.isPlaying())
      {
       bk_song.stop();
-      sound_btn.addImage(unmuteImg)
-
-
-    }
-     else if(!bk_song.isPlaying() && mousePressedOver(sound_btn)){
-      bk_song.play();
-      sound_btn.addImage(muteImg)
+      mute_btn1 = createImg('mute.png');
+      mute_btn1.position(width-50,20);
+      mute_btn1.size(50,50);
+      mute_btn1.mouseClicked(mute);
+      mute_btn.hide()
      }
+     else{
+      bk_song.play();
+      mute_btn2 = createImg('unmute.png');
+      mute_btn2.position(width-100,20);
+      mute_btn2.size(50,50);
+      mute_btn2.mouseClicked(mute);
+      mute_btn.hide()
+     
+     }
+    
 }
-
 
 
 function airblow(){
